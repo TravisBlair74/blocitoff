@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   def show
-    @wiki = Wiki.find(params[:id])
+    @item = Item.find(params[:id])
   end
-  
+
   def new
     @item = Item.new
   end
@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new
     @item.title = params[:item][:title]
-    @item.user_id = current_user[:id]
+    @item.user = current_user
 
     if @item.save
       flash[:notice] = "Item was saved."
