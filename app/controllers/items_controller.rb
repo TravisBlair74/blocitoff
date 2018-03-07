@@ -9,8 +9,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new
-    @item.title = params[:item][:title]
-    @item.user = current_user
+    @item.name = params[:item][:name]
+    @item.user_id = current_user[:id]
 
     if @item.save
       flash[:notice] = "Item was saved."
@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.title = params[:item][:title]
+    @item.name = params[:item][:name]
 
     if @item.save
       flash[:notice] = "Item was updated."
@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     if @item.destroy
-      flash[:notice] = "\"#{@item.title}\" was deleted successfully."
+      flash[:notice] = "\"#{@item.name}\" was deleted successfully."
     else
       flash.now[:alert] = "There was an error deleting the item."
     end
