@@ -1,0 +1,15 @@
+<h1>Your Account</h1>
+<body>
+  <% if user_signed_in? %>
+    <div>Welcome, <strong><%= current_user.email %></strong></div>
+    <h2>Your to-do items:</h2>
+    <%= render partial: 'items/item' %>
+    <div>
+    <h2>New to-do Item</h2>
+    <%= render partial: 'items/form' %>
+  </div>
+  <% else %>
+    <div>You are not signed in.  Please click "Sign Up" or "Sign In" above.</div>
+  <% end %>
+
+</body>

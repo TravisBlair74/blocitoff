@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  get 'users/show'
   get 'items/new'
 
-  get 'users_controller/show'
   devise_for :users
   get 'welcome/index'
 
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root 'users_controller#show', as: :authenticated_root
+    root 'users#show', as: :authenticated_root
   end
 
   root 'welcome#index'
