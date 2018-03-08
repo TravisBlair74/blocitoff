@@ -3,8 +3,10 @@
   <% if user_signed_in? %>
     <div>Welcome, <strong><%= current_user.email %></strong></div>
     <h2>Your to-do items:</h2>
-    <%= render partial: 'items/item', locals: { user: current_user, item: @item } %>
-
+    <% @items.each do |item| %>
+      <%= render item %>
+    <% end %>
+    
     <div>
     <h2>New to-do Item</h2>
     <%= render partial: "items/form", locals: { user: current_user, item: @item } %>
